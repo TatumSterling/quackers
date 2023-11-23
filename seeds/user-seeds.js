@@ -1,26 +1,51 @@
 const { User } = require('../models');
-const faker = require('faker');
 
 const seedUsers = async () => {
   try {
-    // Drop the existing table if it exists (for demonstration purposes)
     await User.sync({ force: true });
 
-    // Create fake users
-    const fakeUsers = Array.from({ length: 10 }, () => ({
-      username: faker.internet.userName(),
-      email: faker.internet.email(),
-      password: faker.internet.password(),
-    }));
+    // Sample user data
+    const userData = [
+        {
+          username: 'john_doe',
+          email: 'john.doe@example.com',
+          password: 'password123',
+        },
+        {
+          username: 'jane_smith',
+          email: 'jane.smith@example.com',
+          password: 'secret456',
+        },
+        {
+          username: 'bob_carter',
+          email: 'bob.carter@example.com',
+          password: 'secure789',
+        },
+        {
+          username: 'alice_jones',
+          email: 'alice.jones@example.com',
+          password: 'letmein321',
+        },
+        {
+          username: 'sam_wilson',
+          email: 'sam.wilson@example.com',
+          password: 'captainamerica',
+        },
+        {
+          username: 'lisa_parker',
+          email: 'lisa.parker@example.com',
+          password: 'webdeveloper',
+        },
+    ];
 
-    // Insert fake users into the database
-    await User.bulkCreate(fakeUsers);
+    // Insert sample users into the database
+    await User.bulkCreate(userData);
 
-    console.log('Fake users seeded successfully.');
+    console.log('Users seeded successfully.');
   } catch (error) {
-    console.error('Error seeding fake users:', error);
+    console.error('Error seeding users:', error);
   } finally {
-    // Close the Sequelize connection
+
     await User.sequelize.close();
   }
 };
