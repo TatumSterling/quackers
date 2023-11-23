@@ -28,7 +28,7 @@ const seedLikes = async () => {
       { user_id: 2, comment_id: 6 },
       { user_id: 3, post_id: 5 },
       { user_id: 4, post_id: 5 },
-      // Add more like data as needed
+
     ];
 
     // Insert sample likes into the database
