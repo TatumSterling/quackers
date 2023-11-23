@@ -30,6 +30,13 @@ Posts.init(
             type: DataTypes.DATE,
             defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
         },
+        category_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'category',
+                key: 'id'
+            }
+        }
     },
     {
         sequelize,
