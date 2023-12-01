@@ -5,8 +5,6 @@ router.get('/', async (req, res) => {
     try {
       const dbPostData = await Posts.findAll(
 );
-
-      console.log(dbPostData);
   
       const blogPosts = dbPostData.map((post) =>
         post.get({ plain: true })
