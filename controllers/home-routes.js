@@ -3,24 +3,24 @@ const { Categories, Posts, User, Likes, Comments, PostCategory } = require('../m
 
 router.get('/', async (req, res) => {
     try {
-      const dbGalleryData = await Categories.findAll({
-        include: [
-          {
-            model: Painting,
-            attributes: ['filename', 'description'],
-          },
-        ],
-      });
+      const dbPostData = await Posts.findAll(
+);
+
+      console.log(dbPostData);
   
-      const galleries = dbGalleryData.map((gallery) =>
-        gallery.get({ plain: true })
-      );
+      const blogPosts = dbPostData.map((post) =>
+        post.get({ plain: true })
+        );
+
+
       // TODO: Send over the 'loggedIn' session variable to the 'homepage' template
-      res.render('homepage', {
-        galleries,
+      res.render('homepage',
+      {
+        blogPosts,
   
-        loggedIn: req.session.loggedIn
-      });
+        // loggedIn: req.session.loggedIn
+      }
+      );
     } catch (err) {
       console.log(err);
       res.status(500).json(err);

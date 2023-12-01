@@ -1,0 +1,9 @@
+{{#each blogPosts}}
+  <article class="blog-post">
+    <h2>{{title}}</h2>
+    <p class="post-metadata">Published on {{createdAt}} by {{User.username}}</p>
+    <div class="post-content">
+      {{{content}}}
+    </div>
+  </article>
+{{/each}}

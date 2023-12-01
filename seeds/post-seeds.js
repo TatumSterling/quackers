@@ -1,6 +1,6 @@
 const { Posts } = require('../models');
 
-const seedPosts =  () => {
+
 
 
     // Sample post data
@@ -111,10 +111,14 @@ const seedPosts =  () => {
     ];
 
     // Insert sample posts into the database
-    Posts.bulkCreate(postData);
+    const seedPosts = async () => {
+      try {
+        await Posts.bulkCreate(postData);
+        console.log('Posts seeded successfully.');
+      } catch (error) {
+        console.error('Error seeding posts:', error);
+      }
+    };
 
-    console.log('Posts seeded successfully.');
-
-};
 
 module.exports = seedPosts;
