@@ -28,7 +28,7 @@ Posts.init(
         },
         createdAt: {
             type: DataTypes.DATE,
-            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+            defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
         },
         category_id: {
             type: DataTypes.INTEGER,

@@ -1,8 +1,6 @@
 const { Likes } = require('../models');
 
-const seedLikes = async () => {
-  try {
-    await Likes.sync({ force: true });
+const seedLikes =  () => {
 
     // Sample like data
     const likeData = [
@@ -32,15 +30,9 @@ const seedLikes = async () => {
     ];
 
     // Insert sample likes into the database
-    await Likes.bulkCreate(likeData);
+    Likes.bulkCreate(likeData);
 
     console.log('Likes seeded successfully.');
-  } catch (error) {
-    console.error('Error seeding likes:', error);
-  } finally {
-    // Close the Sequelize connection
-    await Likes.sequelize.close();
-  }
-};
+  };
 
-seedLikes();
+  module.exports = seedLikes;

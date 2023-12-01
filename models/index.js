@@ -1,17 +1,17 @@
 //import models
-const Category = require('./Category');
+const Categories = require('./Categories');
 const User = require('./User');
 const Likes = require('./Likes');
-const Comment = require('./Comment');
-const PostCategory = require('./Post_category');
-const Post = require('./Post');
+const Comments = require('./Comment');
+const PostCategory = require('./Post-category');
+const Posts = require('./Post');
 
 //user hasMany Posts (one to many)
-User.hasMany(Post, {
+User.hasMany(Posts, {
     foreignKey: 'user_id'
 });
 //Posts belongsTo User 
-Post.belongsTo(User, {
+Posts.belongsTo(User, {
     foreingKey: 'user_id'
 });
 //user hasMany Likes (one to many)
@@ -23,37 +23,37 @@ Likes.belongsTo(User, {
     foreignKey: 'user_id'
 });
 //user hasMany Comments (one to many)
-User.hasMany(Comment, {
+User.hasMany(Comments, {
     foreinKey: 'user_id'
 });
 //Comments belongsTo User
-Comment.belongsTo(User, {
+Comments.belongsTo(User, {
     foreingKey: 'user_id'
 });
 //Post hasMany Comments (one to many)
-Post.hasMany(Comment, {
+Posts.hasMany(Comments, {
     foreignKey: 'post_id'
 });
 //Post hasMany Likes (one to many)
-Post.hasMany(Likes, {
+Posts.hasMany(Likes, {
     foreignKey: 'post_id'
 });
 //Category belongsToMany Post (through PostCategory)
-Category.belongsToMany(Post, {
+Categories.belongsToMany(Posts, {
     through: PostCategory,
     foreignKey: 'category_id'
 });
 //Post belongsToMany Cateogory ( through PostCategory)
-Post.belongsToMany(Category, {
+Posts.belongsToMany(Categories, {
     through: PostCategory,
     foreignKey: 'post_id'
 });
 
 module.exports = {
-    Category,
+    Categories,
     User,
     Likes,
-    Comment,
+    Comments,
     PostCategory,
-    Post,
+    Posts,
 };

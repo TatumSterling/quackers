@@ -12,7 +12,7 @@ Comments.init(
             autoIncrement: true,
         },
         post_id: {
-            type: dataTypes.INTEGER,
+            type: DataTypes.INTEGER,
             referenes: {
                 model: 'post',
                 key: 'id',
@@ -20,7 +20,7 @@ Comments.init(
             allowNull: false,
         },
         user_id: {
-            type: dataType.INTEGER,
+            type: DataTypes.INTEGER,
             references: {
                 model: 'user',
                 key: 'id'
@@ -33,7 +33,7 @@ Comments.init(
         },
         createdAt: {
             type: DataTypes.DATE,
-            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+            defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
         },
 
     },

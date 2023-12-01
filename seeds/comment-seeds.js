@@ -1,8 +1,7 @@
-const { Comment } = require('../models');
+const { Comments } = require('../models');
 
-const seedComments = async () => {
-  try {
-    await Comment.sync({ force: true });
+const seedComments =  () => {
+
 
     // Sample comment data
     const commentData = [
@@ -50,15 +49,10 @@ const seedComments = async () => {
       ];
 
     // Insert sample comments into the database
-    await Comment.bulkCreate(commentData);
+    Comments.bulkCreate(commentData);
 
     console.log('Comments seeded successfully.');
-  } catch (error) {
-    console.error('Error seeding comments:', error);
-  } finally {
-    // Close the Sequelize connection
-    await Comment.sequelize.close();
-  }
+
 };
 
-seedComments();
+module.exports = seedComments;

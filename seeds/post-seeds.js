@@ -1,9 +1,7 @@
-const { Post } = require('../models');
+const { Posts } = require('../models');
 
-const seedPosts = async () => {
-  try {
+const seedPosts =  () => {
 
-    await Post.sync({ force: true });
 
     // Sample post data
     const postData = [
@@ -113,15 +111,10 @@ const seedPosts = async () => {
     ];
 
     // Insert sample posts into the database
-    await Post.bulkCreate(postData);
+    Posts.bulkCreate(postData);
 
     console.log('Posts seeded successfully.');
-  } catch (error) {
-    console.error('Error seeding posts:', error);
-  } finally {
-    // Close the Sequelize connection
-    await Post.sequelize.close();
-  }
+
 };
 
-seedPosts();
+module.exports = seedPosts;

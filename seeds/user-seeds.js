@@ -1,8 +1,7 @@
 const { User } = require('../models');
 
-const seedUsers = async () => {
-  try {
-    await User.sync({ force: true });
+const seedUsers =  () => {
+
 
     // Sample user data
     const userData = [
@@ -38,16 +37,11 @@ const seedUsers = async () => {
         },
     ];
 
-    // Insert sample users into the database
-    await User.bulkCreate(userData);
+  // bulk create user data
+    User.bulkCreate(userData);
 
     console.log('Users seeded successfully.');
-  } catch (error) {
-    console.error('Error seeding users:', error);
-  } finally {
 
-    await User.sequelize.close();
-  }
 };
 
-seedUsers();
+module.exports = seedUsers;

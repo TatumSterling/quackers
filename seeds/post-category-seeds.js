@@ -1,9 +1,7 @@
 const { PostCategory } = require('../models');
 
-const seedPostCategory = async () => {
-  try {
+const seedPostCategory = () => {
 
-    await PostCategory.sync({ force: true });
 
     // Sample data for post-category associations
     const postCategoryData = [
@@ -19,15 +17,10 @@ const seedPostCategory = async () => {
     ];
 
     // Insert sample data into the database
-    await PostCategory.bulkCreate(postCategoryData);
+    PostCategory.bulkCreate(postCategoryData);
 
     console.log('PostCategory associations seeded successfully.');
-  } catch (error) {
-    console.error('Error seeding PostCategory associations:', error);
-  } finally {
-    // Close the Sequelize connection
-    await PostCategory.sequelize.close();
-  }
+
 };
 
-seedPostCategory();
+module.exports = seedPostCategory;
